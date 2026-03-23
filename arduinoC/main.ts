@@ -40,7 +40,7 @@ namespace mq5sensor {
 				`  float sum = 0;\n` +
 				`  for (int i = 0; i < 50; i++) {\n` +
 				`    float v = analogRead(pin) * (5.0 / 1023.0);\n` +
-				`    if (v < 0.001) v = 0.001;  // guard divide-by-zero\n` +
+				`    if (v < 0.001) v = 0.001;\n` +
 				`    sum += (5.0 - v) / v * ${RL_VALUE};\n` +
 				`    delay(20);\n` +
 				`  }\n` +
@@ -70,8 +70,8 @@ namespace mq5sensor {
 		let r0  = parameter.R0.code;
 		if (Generator.board === 'arduino') {
 			Generator.addInclude("math_h", "#include <math.h>");
-			Generator.addInclude("mq5_resistance",
-				`float mq5_resistance(int pin) {\n` +
+			Generator.addInclude("mq5_ppm",
+				`float mq5_ppm(int pin, float r0) {\n` +
 				`  float sum = 0;\n` +
 				`  for (int i = 0; i < 50; i++) {\n` +
 				`    float v = analogRead(pin) * (5.0 / 1023.0);\n` +
@@ -79,14 +79,9 @@ namespace mq5sensor {
 				`    sum += (5.0 - v) / v * ${RL_VALUE};\n` +
 				`    delay(20);\n` +
 				`  }\n` +
-				`  return sum / 50.0;\n` +
-				`}`
-			);
-			Generator.addInclude("mq5_ppm",
-				`float mq5_ppm(int pin, float r0) {\n` +
-				`  float rs    = mq5_resistance(pin);\n` +
+				`  float rs    = sum / 50.0;\n` +
 				`  float ratio = rs / r0;\n` +
-				`  if (ratio <= 0) return -1;  // sensor not ready\n` +
+				`  if (ratio <= 0) return -1;\n` +
 				`  float ppm = ${LPG_A} * pow(ratio, 1.0 / ${LPG_B});\n` +
 				`  if (ppm < 0) ppm = 0;\n` +
 				`  return ppm;\n` +
