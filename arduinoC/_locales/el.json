@@ -1,0 +1,8 @@
+{
+    
+    "mq5sensor.calibrateMQ5|block": "Βαθμονόμηση του MQ5 στο pin [PIN] (καθαρός αέρας — εκτύπωσε R0)",
+	"mq5sensor.getLpgPPM|block": "Διάβασε συγκέντρωση LPG σε ppm στο pin [PIN] με R0=[R0] kΩ",
+	"mq5sensor.getLpgPPMSimple|block": "Διάβασε συγκέντρωση LPG σε ppm στο pin [PIN] (πρόχειρη εκτίμηση-χωρίς βαθμονόμηση)"
+
+    
+}

@@ -1,0 +1,25 @@
+{
+	"name": {
+		"en": "MQ5 LPG gas sensor (v.0.1)",
+		"el": "MQ5 LPG gas sensor (v.0.1)"
+	},
+	"description": {
+		"en": "MQ5 LPG gas sensor (v.0.1)",
+		"el": "MQ5 LPG gas sensor (v.0.1)"
+	},
+	"author": "wallia",
+	"email": "v.vallianos@gmail.com",
+	"license": "MIT",
+	"isBoard": false,
+	"id": "mq5sensor",
+	"platform": ["win", "mac", "web"],
+	"version": "0.1",
+	"asset": {
+		"arduinoC": {
+			"dir": "arduinoC/",
+			"version": "0.1",
+			"board": ["arduino"],
+			"main": "main.ts"
+		}
+	}
+}
